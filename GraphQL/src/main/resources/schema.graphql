@@ -1,0 +1,37 @@
+package graphql;
+
+import business.ModuleBusiness;
+import com.coxautodev.graphql.tools.GraphQLRootResolver;
+import entities.Module;
+
+import java.util.List;
+
+public class ModuleQueryResolver implements GraphQLRootResolver {
+
+    private ModuleBusiness helper;
+
+    public ModuleQueryResolver() {
+        helper = new ModuleBusiness();
+    }
+
+
+    // GET ALL MODULES
+
+    public List<Module> getAllModules() {
+        return helper.getAllModules();
+    }
+
+
+    // SEARCH BY MATRICULE
+
+    public Module searchModuleByMatricule(String matricule) {
+        return helper.getModuleByMatricule(matricule);
+    }
+
+    // SEARCH BY TYPE
+
+    public List<Module> searchModulesByType(Module.TypeModule type) {
+        return helper.getModulesByType(type);
+    }
+}
+
